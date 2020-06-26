@@ -5,16 +5,16 @@
     <RazorLangVersion>3.0</RazorLangVersion>
     <RootNamespace>Blazored.LocalStorage</RootNamespace>
 
-    <PackageId>Blazored.LocalStorage</PackageId>
-    <Version>2.1.6</Version>
-    <Authors>Chris Sainty</Authors>
-    <Description>A library to provide access to local storage in Blazor applications</Description>
-    <Copyright>Copyright 2018 (c) Chris Sainty. All rights reserved.</Copyright>
+    <PackageId>Blazored.LocalStorage.Secure</PackageId>
+    <Version>1.0</Version>
+    <Authors>Dylan</Authors>
+    <Description>A library to provide access to local storage in Blazor applications, original by Chris Sainty</Description>
+    <Copyright>Copyright 2020 (c) Chris Sainty. All rights reserved.</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/blazored/LocalStorage</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/KryptoBeard/LocalStorage-Secure</PackageProjectUrl>
     <PackageIconUrl>https://avatars1.githubusercontent.com/u/39194025</PackageIconUrl>
-    <RepositoryUrl>https://github.com/blazored/LocalStorage</RepositoryUrl>
-    <PackageTags>Blazor LocalStorage Blazored Razor Components</PackageTags>
+    <RepositoryUrl>https://github.com/KryptoBeard/LocalStorage-Secure</RepositoryUrl>
+    <PackageTags>Blazor LocalStorage Fork Blazored Razor Components</PackageTags>
     <Company />
   </PropertyGroup>
 
