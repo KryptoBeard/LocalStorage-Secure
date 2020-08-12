@@ -1,17 +1,7 @@
-# Blazored LocalStorage
+# Blazored LocalStorage - Secure
 A library to provide access to local storage in Blazor applications
 
-[![Build Status](https://dev.azure.com/blazored/LocalStorage/_apis/build/status/Blazored.LocalStorage?branchName=master)](https://dev.azure.com/blazored/LocalStorage/_build/latest?definitionId=1&branchName=master)
-
-[![Nuget](https://img.shields.io/nuget/v/blazored.localstorage.svg)](https://www.nuget.org/packages/Blazored.LocalStorage/)
-
-### Installing
-
-You can install from NuGet using the following command:
-
-`Install-Package Blazored.LocalStorage`
-
-Or via the Visual Studio package manager.
+Only do this on Blazor Server, it will not be secure from Blazor Web Assembly.
 
 ### Setup
 
@@ -24,19 +14,6 @@ public void ConfigureServices(IServiceCollection services)
 }
 ``` 
 
-Or in your _Program.cs_ file in Blazor WebAssembly.
-
-```c#
-public static async Task Main(string[] args)
-{
-    var builder = WebAssemblyHostBuilder.CreateDefault(args);
-    builder.RootComponents.Add<App>("app");
-
-    builder.Services.AddBlazoredLocalStorage();
-
-    await builder.Build().RunAsync();
-}
-```
 
 ### Configuration
 
@@ -50,53 +27,7 @@ public void ConfigureServices(IServiceCollection services)
         config.JsonSerializerOptions.WriteIndented = true);
 }
 ```
-Or in your _Program.cs_ file in Blazor WebAssembly.
 
-```c#
-public static async Task Main(string[] args)
-{
-    var builder = WebAssemblyHostBuilder.CreateDefault(args);
-    builder.RootComponents.Add<App>("app");
-
-    builder.Services.AddBlazoredLocalStorage(config =>
-        config.JsonSerializerOptions.WriteIndented = true);
-
-    await builder.Build().RunAsync();
-}
-```
-
-### Usage (Blazor WebAssembly)
-To use Blazored.LocalStorage in Blazor WebAssembly, inject the `ILocalStorageService` per the example below.
-
-```c#
-@inject Blazored.LocalStorage.ILocalStorageService localStorage
-
-@code {
-
-    protected override async Task OnInitializedAsync()
-    {
-        await localStorage.SetItemAsync("name", "John Smith");
-        var name = await localStorage.GetItemAsync<string>("name");
-    }
-
-}
-```
-
-With Blazor WebAssembly you also have the option of a synchronous API, if your use case requires it. You can swap the `ILocalStorageService` for `ISyncLocalStorageService` which allows you to avoid use of `async`/`await`. For either interface, the method names are the same.
-
-```c#
-@inject Blazored.LocalStorage.ISyncLocalStorageService localStorage
-
-@code {
-
-    protected override void OnInitialized()
-    {
-        localStorage.SetItem("name", "John Smith");
-        var name = localStorage.GetItem<string>("name");
-    }
-
-}
-```
 
 ### Usage (Blazor Server)
 
