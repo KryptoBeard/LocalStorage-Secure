@@ -79,6 +79,8 @@ namespace Blazored.LocalStorage
                 throw new ArgumentNullException(nameof(key));
 
             await _jSRuntime.InvokeVoidAsync("localStorage.removeItem", key);
+
+            RaiseOnRemoved(key);
         }
 
         public async Task ClearAsync() => await _jSRuntime.InvokeVoidAsync("localStorage.clear");
@@ -261,6 +263,7 @@ namespace Blazored.LocalStorage
         }
 
         public event EventHandler<ChangedEventArgs> Changed;
+        public event EventHandler<ChangedEventArgs> Removed;
         private void RaiseOnChanged(string key, object oldValue, object data)
         {
             var e = new ChangedEventArgs
@@ -271,6 +274,16 @@ namespace Blazored.LocalStorage
             };
 
             Changed?.Invoke(this, e);
+        }
+        private void RaiseOnRemoved(string key)
+        {
+            var e = new ChangedEventArgs
+            {
+                Key = key,
+                OldValue = null,
+                NewValue = null
+            };
+            Removed?.Invoke(this, e);
         }
     }
 }

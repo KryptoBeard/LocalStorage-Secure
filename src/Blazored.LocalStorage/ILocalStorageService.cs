@@ -26,5 +26,6 @@ namespace Blazored.LocalStorage
 
         event EventHandler<ChangingEventArgs> Changing;
         event EventHandler<ChangedEventArgs> Changed;
+        event EventHandler<ChangedEventArgs> Removed;
     }
 }
