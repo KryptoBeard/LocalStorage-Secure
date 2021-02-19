@@ -75,12 +75,21 @@ namespace Blazored.LocalStorage
 
         public async Task RemoveItemAsync(string key)
         {
-            if (string.IsNullOrEmpty(key))
-                throw new ArgumentNullException(nameof(key));
+            try
+            {
 
-            await _jSRuntime.InvokeVoidAsync("localStorage.removeItem", key);
+                if (string.IsNullOrEmpty(key))
+                    throw new ArgumentNullException(nameof(key));
 
-            RaiseOnRemoved(key);
+                await _jSRuntime.InvokeVoidAsync("localStorage.removeItem", key);
+
+                RaiseOnRemoved(key);
+
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         public async Task ClearAsync() => await _jSRuntime.InvokeVoidAsync("localStorage.clear");
